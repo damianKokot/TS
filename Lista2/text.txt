@@ -1,0 +1,91 @@
+Zadanie 1
+1.1 Tworzenie modelu sieci. W tym zadaniu chciałbym spróbować stworzyć model jak najbardziej symetryczny i go zbadać pod kątem przepustowości. Stworzę do tego funkcję w języku Python, która dla każdej pary (i, j) bada przez które wierzchołki musi przepłynąć pakiet, aby ich ilość byłą najmniejsza.
+Tak wyznaczę macierz N wnioskując na podstawie używania krawędzi. 
+
+import networkx as nx
+import numpy as np
+
+graphSize = 20
+G = nx.cycle_graph(graphSize)
+
+# Dodawanie krawędzi sąsiedzkich
+for index in range(graphSize - 1):
+   G.add_edge(index, index + 1)
+# Dodawanie krawędzi przekątnych
+diagonals = [(source, source + 10) for source in [0, 2, 5, 7]]
+diagonals += [(source, (source + 5) % graphSize) for source in [0, 5, 10, 15]]
+
+for (source, target) in diagonals:
+   G.add_edge(source, target)
+
+# Generowanie najkrótszych ścieżek
+paths = dict(nx.all_pairs_shortest_path(G))
+
+N = np.zeros((graphSize, graphSize), dtype=int)
+for sourceNode, pathsFromNode in paths.items():
+   for targetNode, path in pathsFromNode.items():
+      for nodeIndex in range(len(path) - 1):        
+         N[path[nodeIndex]][path[nodeIndex + 1]] += 1
+print(N)
+...
+
+
+1.2 Następnie załóżmy, że działamy w idealnych warunkach. Tzn że nie ma zakłóceń itd, a mamy do wybory dwa rodzaje kabli o prędkościach 1GB/s i 3GB/s. Niech te założenia pomogą nam w testowaniu modelu.
+Ananlizując wynik obciążeń spróbujmy ustanowić założenie, że stosujemy kabel 300MB/s tam, gdzie połączenie jest najbardziej oblegane, tzn. tam gdzie sumaryczna ilość "do i od" połączeń jest większa od 25.
+
+...
+NSumaric = np.zeros((graphSize, graphSize), dtype=int)
+fastEdges = {}
+slowEdges = {}
+
+for sourceIndex, sourceValues in enumerate(N):
+   for targetIndex, value in enumerate(sourceValues):
+      nodeFrom = min(sourceIndex, targetIndex)
+      nodeTo = max(sourceIndex, targetIndex)
+      NSumaric[nodeFrom][nodeTo] += value
+
+      if N[nodeFrom][nodeTo] >= 25:
+         fastEdges[(nodeFrom, nodeTo)] = N[nodeFrom][nodeTo]
+      elif N[nodeFrom][nodeTo] != 0:
+         slowEdges[(nodeFrom, nodeTo)] = N[nodeFrom][nodeTo]
+
+print(len(fastEdges))
+print(len(slowEdges))
+...
+
+Wtedy funkcja a(e) to:
+
+def a(edge):
+   if edge in fastEdges.keys():
+      return 3000
+   else:
+      return 1000
+
+A funkcja c(e) to:
+...
+def c(edge):
+   nodeFrom = min(edge)
+   nodeTo = max(edge)
+   
+   if NSumaric[nodeFrom][nodeTo] == 0:
+      return 0
+   else:
+      return a(edge) / NSumaric[nodeFrom][nodeTo]
+...
+
+ZADANIE 2
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

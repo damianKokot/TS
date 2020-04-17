@@ -1,0 +1,65 @@
+0 - 30, 100/300MB
+Reliability: 78.00% and average time passed: 0.000122
+where in 98.00% cases there was inconnectCases
+
+30 - 60
+Reliability: 86.00% and average time passed: 0.000125
+where in 92.86% cases there was inconnectCases
+
+60 - 90
+Reliability: 86.00% and average time passed: 0.000120
+where in 92.86% cases there was inconnectCases
+
+90 - 120
+Reliability: 89.00% and average time passed: 0.000127
+where in 81.82% cases there was inconnectCases
+
+120 - 150
+Reliability: 88.00% and average time passed: 0.000128
+where in 77.27% cases there was inconnectCases
+
+
+30 - 50 100/300MB
+Reliability: 91.00% and average time passed: 0.000119
+where in 89.00% cases there was inconnectCases
+
+200/300MB
+Reliability: 92.00% and average time passed: 0.000064
+where in 100.00% cases there was inconnectCases
+
+300MB
+Reliability: 92.00% and average time passed: 0.000048
+where in 100.00% cases there was inconnectCases
+
+100MB/1GB
+Reliability: 94.00% and average time passed: 0.000107
+where in 100.00% cases there was inconnectCases
+
+250MB/1GB
+Reliability: 93.00% and average time passed: 0.000040
+where in 100.00% cases there was inconnectCases
+
+500MB/1GB
+Reliability: 94.00% and average time passed: 0.000025
+where in 100.00% cases there was inconnectCases
+
+1/3GB
+Reliability: 94.00% and average time passed: 0.000038
+where in 100.00% cases there was inconnectCases
+
+10GB/100GB
+Reliability: 93.00% and average time passed: 0.000001
+where in 100.00% cases there was inconnectCases
+
+Set p to 0.3
+Connect 8 with 12 and 2 with 18
+Reliability: 36.00% and average time passed: 0.000110
+where in 100.00% cases there was inconnectCases
+
+Connect 12 with 17 and 2 with 7
+Reliability: 29.00% and average time passed: 0.000108
+where in 100.00% cases there was inconnectCases
+
+Connect 12 with 17 and 2 with 7 and 7 with 12 and 17 with 2
+Reliability: 45.00% and average time passed: 0.000120
+where in 100.00% cases there was inconnectCases
