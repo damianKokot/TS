@@ -1,65 +1,84 @@
-0 - 30, 100/300MB
-Reliability: 78.00% and average time passed: 0.000122
-where in 98.00% cases there was inconnectCases
-
+0 - 30, 3Mb, p=0.9, t=0.00005
+Reliability: 87.90% and average time passed: 0.000034
+where in 0.00% cases there was connection timeout
 30 - 60
-Reliability: 86.00% and average time passed: 0.000125
-where in 92.86% cases there was inconnectCases
-
+Reliability: 86.30% and average time passed: 0.000035
+where in 0.00% cases there was connection timeout
 60 - 90
-Reliability: 86.00% and average time passed: 0.000120
-where in 92.86% cases there was inconnectCases
-
+Reliability: 86.80% and average time passed: 0.000037
+where in 0.00% cases there was connection timeout
 90 - 120
-Reliability: 89.00% and average time passed: 0.000127
-where in 81.82% cases there was inconnectCases
-
+Reliability: 86.60% and average time passed: 0.000039
+where in 1.39% cases there was connection timeout
 120 - 150
-Reliability: 88.00% and average time passed: 0.000128
-where in 77.27% cases there was inconnectCases
+Reliability: 85.60% and average time passed: 0.000041
+where in 3.35% cases there was connection timeout
+0 - 500
+Reliability: 31.80% and average time passed: 0.000048
+where in 78.01% cases there was connection timeout
 
+30 - 50, 1Mb, p=0.9, t=0.00005
+Reliability: 0.00% and average time passed: 0.000000
+where in 89.00% cases there was connection timeout
+2Mb
+Reliability: 0.00% and average time passed: 0.000000
+where in 84.90% cases there was connection timeout
+3MB
+Reliability: 87.20% and average time passed: 0.000035
+where in 0.00% cases there was connection timeout
 
-30 - 50 100/300MB
-Reliability: 91.00% and average time passed: 0.000119
-where in 89.00% cases there was inconnectCases
-
-200/300MB
-Reliability: 92.00% and average time passed: 0.000064
-where in 100.00% cases there was inconnectCases
-
-300MB
-Reliability: 92.00% and average time passed: 0.000048
-where in 100.00% cases there was inconnectCases
-
-100MB/1GB
-Reliability: 94.00% and average time passed: 0.000107
-where in 100.00% cases there was inconnectCases
-
-250MB/1GB
-Reliability: 93.00% and average time passed: 0.000040
-where in 100.00% cases there was inconnectCases
-
-500MB/1GB
-Reliability: 94.00% and average time passed: 0.000025
-where in 100.00% cases there was inconnectCases
-
-1/3GB
-Reliability: 94.00% and average time passed: 0.000038
-where in 100.00% cases there was inconnectCases
-
-10GB/100GB
-Reliability: 93.00% and average time passed: 0.000001
-where in 100.00% cases there was inconnectCases
-
-Set p to 0.3
 Connect 8 with 12 and 2 with 18
-Reliability: 36.00% and average time passed: 0.000110
-where in 100.00% cases there was inconnectCases
+Set p to 0.7, speed=5Mb/s
+Reliability: 33.20% and average time passed: 0.000021
+where in 0.00% cases there was connection timeout
+Set p to 0.8, speed=5Mb/s
+Reliability: 65.70% and average time passed: 0.000021
+where in 0.00% cases there was connection timeout
+Set p to 0.9, speed=5Mb/s
+Reliability: 88.70% and average time passed: 0.000021
+where in 0.00% cases there was connection timeout
+Set p to 0.95, speed=5Mb/s
+Reliability: 97.70% and average time passed: 0.000021
+where in 0.00% cases there was connection timeout
 
 Connect 12 with 17 and 2 with 7
-Reliability: 29.00% and average time passed: 0.000108
-where in 100.00% cases there was inconnectCases
+Set p to 0.7, speed=5Mb/s
+Reliability: 27.40% and average time passed: 0.000021
+where in 0.00% cases there was connection timeout
+Set p to 0.8, speed=5Mb/s
+Reliability: 60.90% and average time passed: 0.000021
+where in 0.00% cases there was connection timeout
+Set p to 0.9, speed=5Mb/s
+Reliability: 87.40% and average time passed: 0.000021
+where in 0.00% cases there was connection timeout
+Set p to 0.95, speed=5Mb/s
+Reliability: 97.00% and average time passed: 0.000021
+where in 0.00% cases there was connection timeout
 
 Connect 12 with 17 and 2 with 7 and 7 with 12 and 17 with 2
-Reliability: 45.00% and average time passed: 0.000120
-where in 100.00% cases there was inconnectCases
+Set p to 0.7, speed=5Mb/s
+Reliability: 30.70% and average time passed: 0.000021
+where in 0.00% cases there was connection timeout
+Set p to 0.8, speed=5Mb/s
+Reliability: 58.20% and average time passed: 0.000021
+where in 0.00% cases there was connection timeout
+Set p to 0.9, speed=5Mb/s
+Reliability: 86.20% and average time passed: 0.000021
+where in 0.00% cases there was connection timeout
+Set p to 0.95, speed=5Mb/s
+Reliability: 96.80% and average time passed: 0.000021
+where in 0.00% cases there was connection timeout
+
+No diagonals
+Set p to 0.7, speed=5Mb/s
+Reliability: 0.60% and average time passed: 0.000023
+where in 0.00% cases there was connection timeout
+Set p to 0.8, speed=5Mb/s
+Reliability: 7.40% and average time passed: 0.000023
+where in 0.00% cases there was connection timeout
+Set p to 0.9, speed=5Mb/s
+Reliability: 39.50% and average time passed: 0.000023
+where in 0.00% cases there was connection timeout
+Set p to 0.95, speed=5Mb/s
+Reliability: 76.20% and average time passed: 0.000022
+where in 0.00% cases there was connection timeout
