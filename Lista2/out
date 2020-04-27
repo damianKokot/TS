@@ -82,3 +82,32 @@ where in 0.00% cases there was connection timeout
 Set p to 0.95, speed=5Mb/s
 Reliability: 76.20% and average time passed: 0.000022
 where in 0.00% cases there was connection timeout
+
+
+
+Reliability: 77.59% and average time passed: 0.000334
+where in 0.13% cases there was connection timeout
+Reliability: 76.71% and average time passed: 0.000335
+where in 0.09% cases there was connection timeout
+Reliability: 76.90% and average time passed: 0.000335
+where in 0.00% cases there was connection timeout
+Reliability: 76.62% and average time passed: 0.000336
+where in 0.04% cases there was connection timeout
+Reliability: 77.22% and average time passed: 0.000334
+where in 0.18% cases there was connection timeout
+Reliability: 76.23% and average time passed: 0.000335
+where in 0.00% cases there was connection timeout
+Reliability: 76.21% and average time passed: 0.000335
+where in 0.04% cases there was connection timeout
+Reliability: 60.72% and average time passed: 0.000812
+where in 37.14% cases there was connection timeout
+Reliability: 39.86% and average time passed: 0.000879
+where in 57.57% cases there was connection timeout
+Reliability: 16.79% and average time passed: 0.000923
+where in 67.92% cases there was connection timeout
+Reliability: 4.08% and average time passed: 0.000966
+where in 68.76% cases there was connection timeout
+Reliability: 0.00% and average time passed: 0.000000
+where in 67.36% cases there was connection timeout
+Reliability: 0.00% and average time passed: 0.000000
+where in 63.97% cases there was connection timeout

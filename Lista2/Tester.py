@@ -19,11 +19,15 @@ def main():
    graph, intensityMatrix = loadGraphModel()
    graph.graph['sumOfIntensities'] = sum(map(sum, intensityMatrix))
 
-   attempts = 1000
-   averageDataSize = 100
-   Tmax = 0.00005
-   edgeSpeed = 5 * 10**6
-   propability = .9
+   _ = int(input())
+   _ = int(input())
+   _ = int(input())
+
+   attempts = int(input())
+   averageDataSize = int(input())
+   Tmax = float(input())
+   edgeSpeed = int(input())
+   propability = float(input())
 
    stats = testModel(graph, intensityMatrix, edgeSpeed, averageDataSize, Tmax, propability, attempts)
    print('Reliability: {:.2f}% and average time passed: {:.6f}'.format(stats['reliability'], stats['delay']))
@@ -34,11 +38,10 @@ Model testing functions
 '''
 def averageWaitTime(graph, m):
    totalTime = 0
-   sumOfIntensity = 0
+   sumOfIntensity = graph.graph['sumOfIntensities']
 
    for edge in graph.edges:
       edgeData = graph.get_edge_data(*edge)
-      sumOfIntensity += edgeData['a']
       totalTime += edgeData['a']/( edgeData['c']/m - edgeData['a'])
 
    return totalTime / sumOfIntensity
@@ -49,9 +52,6 @@ def testModel(graph, intensityMatrix, edgeSpeed, averageDataSize, Tmax, p, attem
 
    timeoutsCount = 0
    tooBigDataCount = 0
-
-   # Multiply propability to range from 0 to 1000
-   p *= 1000
 
    for _ in range(attempts):
       updatedGraph = modifyMainGraphModel(graph, p)
@@ -97,8 +97,11 @@ def getAverageDelay(timeTotal, passedAttempts):
 '''
 Graph modification functions
 '''
+def getRandom():
+   return random.randrange(1000) / 1000
+
 def filterRandomEdges(edgesList, p):
-   return list(filter(lambda edge: random.randrange(1000) <= p, edgesList))
+   return list(filter(lambda edge: getRandom() <= p, edgesList))
 
 def modifyMainGraphModel(graph, p):
    newGraph = nx.Graph()
@@ -124,8 +127,8 @@ def updateAOnPaths(graph, averageDataSize, intensityMatrix):
          for nodeIndex in range(len(path) - 1):
             graph[path[nodeIndex]][path[nodeIndex + 1]]['a'] += weight
 
-            node = graph[path[nodeIndex]][path[nodeIndex + 1]]
-            if node['a'] * averageDataSize > node['c']:
+            edge = graph[path[nodeIndex]][path[nodeIndex + 1]]
+            if edge['a'] * averageDataSize > edge['c']:
                return False
    return True
 

@@ -4,7 +4,7 @@ import random
 from networkx.readwrite import json_graph
 import json
 
-def generateGraph(size):
+def generateGraph(size, v):
    graph = nx.cycle_graph(size)
 
    # Dodawanie krawędzi sąsiedzkich
@@ -12,8 +12,16 @@ def generateGraph(size):
       graph.add_edge(index, index + 1)
    
    # Definiowanie krawędzi przekątnych
-   diagonals = [(source, source + 10) for source in [0, 2, 5, 7]]
-   diagonals += [(source, (source + 5) % size) for source in [0, 12, 17, 2, 6, 5, 10, 15]]
+   diagonals = []
+   if v != 1:
+      diagonals += [(source, source + 10) for source in [0, 2, 5, 7]]
+      diagonals += [(source, (source + 5) % size) for source in [0, 12, 17, 2, 6, 5, 10, 15]]
+   if v == 2:      
+      diagonals += [(8, 12,), (2, 18)]
+   if v == 3 or v == 4:
+      diagonals += [(12, 17,), (2, 7,)]
+   if v == 4:
+      diagonals += [(7, 12,), (2, 17,)]
 
    for (source, target) in diagonals:
       graph.add_edge(source, target)
@@ -23,18 +31,22 @@ def generateGraph(size):
    return graph
 
 def generateIntensityMatrix(size):
+   
+   fr = int(input())
+   to = int(input())
    # Generowanie najkrótszych ścieżek
    N = np.zeros((size, size), dtype=int)
    for i in range(size):
       for j in range(size):
          if i != j:
-            N[i][j] += random.randrange(30, 50)
+            N[i][j] += random.randrange(fr, to)
    return N
 
 def main():
    graphSize = 20
 
-   G = generateGraph(graphSize)
+   v = int(input())
+   G = generateGraph(graphSize, v)
    N = generateIntensityMatrix(graphSize)
 
    networkData = {
