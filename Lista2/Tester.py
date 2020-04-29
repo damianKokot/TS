@@ -42,6 +42,8 @@ def averageWaitTime(graph, m):
 
    for edge in graph.edges:
       edgeData = graph.get_edge_data(*edge)
+      if edgeData['c']/m - edgeData['a'] == 0:
+         return 999999999
       totalTime += edgeData['a']/( edgeData['c']/m - edgeData['a'])
 
    return totalTime / sumOfIntensity
@@ -128,7 +130,7 @@ def updateAOnPaths(graph, averageDataSize, intensityMatrix):
             graph[path[nodeIndex]][path[nodeIndex + 1]]['a'] += weight
 
             edge = graph[path[nodeIndex]][path[nodeIndex + 1]]
-            if edge['a'] * averageDataSize > edge['c']:
+            if edge['a'] * averageDataSize >= edge['c']:
                return False
    return True
 

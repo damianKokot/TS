@@ -1,0 +1,94 @@
+INTENSITY
+0 30
+Reliability: 77.06% and average time passed: 0.000292
+where in 0.00% cases there was connection timeout
+30 60
+Reliability: 76.71% and average time passed: 0.000347
+where in 0.39% cases there was connection timeout
+60 90
+Reliability: 75.20% and average time passed: 0.000423
+where in 3.71% cases there was connection timeout
+90 120
+Reliability: 67.63% and average time passed: 0.000533
+where in 8.90% cases there was connection timeout
+120 150
+Reliability: 25.80% and average time passed: 0.000590
+where in 38.92% cases there was connection timeout
+150 180
+Reliability: 15.10% and average time passed: 0.000692
+where in 4.00% cases there was connection timeout
+180 210
+Reliability: 5.36% and average time passed: 0.000846
+where in 4.40% cases there was connection timeout
+
+SPEED
+25000000
+Reliability: 0.00% and average time passed: 0.000000
+where in 0.00% cases there was connection timeout
+50000000
+Reliability: 0.00% and average time passed: 0.000000
+where in 0.00% cases there was connection timeout
+75000000
+Reliability: 0.00% and average time passed: 0.000000
+where in 0.00% cases there was connection timeout
+100000000
+Reliability: 4.30% and average time passed: 0.000832
+where in 4.08% cases there was connection timeout
+125000000
+Reliability: 21.50% and average time passed: 0.000544
+where in 1.78% cases there was connection timeout
+150000000
+Reliability: 53.30% and average time passed: 0.000511
+where in 11.56% cases there was connection timeout
+
+STRUCTURE
+
+0
+Reliability: 27.44% and average time passed: 0.000184
+where in 0.00% cases there was connection timeout
+Reliability: 57.93% and average time passed: 0.000161
+where in 0.00% cases there was connection timeout
+Reliability: 87.55% and average time passed: 0.000143
+where in 0.00% cases there was connection timeout
+Reliability: 96.74% and average time passed: 0.000135
+where in 0.00% cases there was connection timeout
+
+1
+Reliability: 27.28% and average time passed: 0.000185
+where in 0.00% cases there was connection timeout
+Reliability: 58.82% and average time passed: 0.000162
+where in 0.00% cases there was connection timeout
+Reliability: 87.30% and average time passed: 0.000142
+where in 0.00% cases there was connection timeout
+Reliability: 96.86% and average time passed: 0.000134
+where in 0.00% cases there was connection timeout
+
+2
+Reliability: 0.94% and average time passed: 0.000511
+where in 0.00% cases there was connection timeout
+Reliability: 6.99% and average time passed: 0.000492
+where in 0.00% cases there was connection timeout
+Reliability: 40.39% and average time passed: 0.000463
+where in 0.00% cases there was connection timeout
+Reliability: 73.89% and average time passed: 0.000427
+where in 0.00% cases there was connection timeout
+
+3
+Reliability: 34.80% and average time passed: 0.000175
+where in 0.00% cases there was connection timeout
+Reliability: 65.14% and average time passed: 0.000154
+where in 0.00% cases there was connection timeout
+Reliability: 90.44% and average time passed: 0.000136
+where in 0.00% cases there was connection timeout
+Reliability: 97.73% and average time passed: 0.000129
+where in 0.00% cases there was connection timeout
+
+4
+Reliability: 28.06% and average time passed: 0.000186
+where in 0.00% cases there was connection timeout
+Reliability: 57.64% and average time passed: 0.000162
+where in 0.00% cases there was connection timeout
+Reliability: 87.08% and average time passed: 0.000143
+where in 0.00% cases there was connection timeout
+Reliability: 96.55% and average time passed: 0.000135
+where in 0.00% cases there was connection timeout

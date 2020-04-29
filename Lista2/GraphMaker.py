@@ -4,7 +4,8 @@ import random
 from networkx.readwrite import json_graph
 import json
 
-def generateGraph(size, v):
+def generateGraph(size):
+   v = int(input())
    graph = nx.cycle_graph(size)
 
    # Dodawanie krawędzi sąsiedzkich
@@ -45,8 +46,7 @@ def generateIntensityMatrix(size):
 def main():
    graphSize = 20
 
-   v = int(input())
-   G = generateGraph(graphSize, v)
+   G = generateGraph(graphSize)
    N = generateIntensityMatrix(graphSize)
 
    networkData = {

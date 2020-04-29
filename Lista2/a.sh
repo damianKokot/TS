@@ -1,207 +1,68 @@
+echo "INTENSITY" > OUT
+
+for v1 in $(seq 0 30 180)
+do
+
 cat > in <<EOF
-30
-50
+0
+$v1
+`expr $v1 + 30`
 10000
 10000
 0.001
 100000000
 .86
 EOF
+
+echo $v1 `expr $v1 + 30` >> OUT
 /usr/bin/python3.7 /home/dam/Dokumenty/Labs/TS/Lista2/GraphMaker.py <in
-/usr/bin/python3.7 /home/dam/Dokumenty/Labs/TS/Lista2/Tester.py <in
+/usr/bin/python3.7 /home/dam/Dokumenty/Labs/TS/Lista2/Tester.py <in >>OUT
+done
 
+
+echo "" >> OUT
+echo "SPEED" >> OUT
+
+for v1 in $(seq 25000000 25000000 150000000)
+do
+
+echo "$v1" >> OUT
 cat > in <<EOF
+0
 30
-60
-10000
+50
+1000
 10000
 0.001
-100000000
+$v1
 .86
 EOF
+/usr/bin/python3.7 /home/dam/Dokumenty/Labs/TS/Lista2/Tester.py <in >>OUT
+done
+
+echo "" >> OUT
+echo "STRUCTURE" >> OUT
+for v1 in 0 1 2 3 4
+do
+
+echo "" >>OUT
+echo "$v1" >>OUT
+
 /usr/bin/python3.7 /home/dam/Dokumenty/Labs/TS/Lista2/GraphMaker.py <in
-/usr/bin/python3.7 /home/dam/Dokumenty/Labs/TS/Lista2/Tester.py <in
+for v2 in .7 .8 .9 .95
+do
 
 cat > in <<EOF
-60
-90
-10000
-10000
-0.001
-100000000
-.86
-EOF
-/usr/bin/python3.7 /home/dam/Dokumenty/Labs/TS/Lista2/GraphMaker.py <in
-/usr/bin/python3.7 /home/dam/Dokumenty/Labs/TS/Lista2/Tester.py <in
-
-cat > in <<EOF
-90
-120
-10000
-10000
-0.001
-100000000
-.86
-EOF
-/usr/bin/python3.7 /home/dam/Dokumenty/Labs/TS/Lista2/GraphMaker.py <in
-/usr/bin/python3.7 /home/dam/Dokumenty/Labs/TS/Lista2/Tester.py <in
-
-cat > in <<EOF
-120
-150
-10000
-10000
-0.001
-100000000
-.86
-EOF
-/usr/bin/python3.7 /home/dam/Dokumenty/Labs/TS/Lista2/GraphMaker.py <in
-/usr/bin/python3.7 /home/dam/Dokumenty/Labs/TS/Lista2/Tester.py <in
-
-
-cat > in <<EOF
-150
-180
-10000
-10000
-0.001
-100000000
-.86
-EOF
-/usr/bin/python3.7 /home/dam/Dokumenty/Labs/TS/Lista2/GraphMaker.py <in
-/usr/bin/python3.7 /home/dam/Dokumenty/Labs/TS/Lista2/Tester.py <in
-
-cat > in <<EOF
-180
-200
-10000
-10000
-0.001
-100000000
-.86
-EOF
-/usr/bin/python3.7 /home/dam/Dokumenty/Labs/TS/Lista2/GraphMaker.py <in
-/usr/bin/python3.7 /home/dam/Dokumenty/Labs/TS/Lista2/Tester.py <in
-
-cat > in <<EOF
+$v1
 30
 50
 10000
-10000
+5000
 0.001
 100000000
-.86
+$v2
 EOF
-/usr/bin/python3.7 /home/dam/Dokumenty/Labs/TS/Lista2/GraphMaker.py <in
-/usr/bin/python3.7 /home/dam/Dokumenty/Labs/TS/Lista2/Tester.py <in
-
-cat > in <<EOF
-30
-50
-10000
-12000
-0.001
-100000000
-.86
-EOF
-/usr/bin/python3.7 /home/dam/Dokumenty/Labs/TS/Lista2/Tester.py <in
-
-cat > in <<EOF
-30
-50
-10000
-14000
-0.001
-100000000
-.86
-EOF
-/usr/bin/python3.7 /home/dam/Dokumenty/Labs/TS/Lista2/Tester.py <in
-
-cat > in <<EOF
-30
-50
-10000
-16000
-0.001
-100000000
-.86
-EOF
-/usr/bin/python3.7 /home/dam/Dokumenty/Labs/TS/Lista2/Tester.py <in
-
-cat > in <<EOF
-30
-50
-10000
-18000
-0.001
-100000000
-.86
-EOF
-/usr/bin/python3.7 /home/dam/Dokumenty/Labs/TS/Lista2/Tester.py <in
-
-cat > in <<EOF
-30
-50
-10000
-20000
-0.001
-100000000
-.86
-EOF
-/usr/bin/python3.7 /home/dam/Dokumenty/Labs/TS/Lista2/Tester.py <in
-
-cat > in <<EOF
-30
-50
-10000
-22000
-0.001
-100000000
-.86
-EOF
-/usr/bin/python3.7 /home/dam/Dokumenty/Labs/TS/Lista2/Tester.py <in
-
-cat > in <<EOF
-30
-50
-10000
-24000
-0.001
-100000000
-.86
-EOF
-/usr/bin/python3.7 /home/dam/Dokumenty/Labs/TS/Lista2/Tester.py <in
-
-cat > in <<EOF
-30
-50
-10000
-26000
-0.001
-100000000
-.86
-EOF
-/usr/bin/python3.7 /home/dam/Dokumenty/Labs/TS/Lista2/Tester.py <in
-
-cat > in <<EOF
-30
-50
-10000
-28000
-0.001
-100000000
-.86
-EOF
-/usr/bin/python3.7 /home/dam/Dokumenty/Labs/TS/Lista2/Tester.py <in
-
-cat > in <<EOF
-30
-50
-10000
-30000
-0.001
-100000000
-.86
-EOF
-/usr/bin/python3.7 /home/dam/Dokumenty/Labs/TS/Lista2/Tester.py <in
+/usr/bin/python3.7 /home/dam/Dokumenty/Labs/TS/Lista2/Tester.py <in >> OUT
+done
+done
 
