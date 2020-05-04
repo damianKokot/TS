@@ -19,15 +19,11 @@ def main():
    graph, intensityMatrix = loadGraphModel()
    graph.graph['sumOfIntensities'] = sum(map(sum, intensityMatrix))
 
-   _ = int(input())
-   _ = int(input())
-   _ = int(input())
-
-   attempts = int(input())
-   averageDataSize = int(input())
-   Tmax = float(input())
-   edgeSpeed = int(input())
-   propability = float(input())
+   attempts = 10000
+   averageDataSize = 5000
+   Tmax = 0.001
+   edgeSpeed = 100000000
+   propability = .95
 
    stats = testModel(graph, intensityMatrix, edgeSpeed, averageDataSize, Tmax, propability, attempts)
    print('Reliability: {:.2f}% and average time passed: {:.6f}'.format(stats['reliability'], stats['delay']))
@@ -42,8 +38,6 @@ def averageWaitTime(graph, m):
 
    for edge in graph.edges:
       edgeData = graph.get_edge_data(*edge)
-      if edgeData['c']/m - edgeData['a'] == 0:
-         return 999999999
       totalTime += edgeData['a']/( edgeData['c']/m - edgeData['a'])
 
    return totalTime / sumOfIntensity
