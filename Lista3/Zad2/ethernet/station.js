@@ -9,6 +9,8 @@ module.exports = class Station {
       this.leftSignals = 0;
       this.colisionsInRow = 0;
       this.waitTime = 0;
+      this.succesfullySent = 0;
+      this.messagesTotal = 0;
 
       this.normalSignal = {
          value: this.name,
@@ -51,6 +53,7 @@ module.exports = class Station {
          } else {
             if (this.sendingSignal !== this.jammingSignal) {
                this.colisionsInRow = 0;
+               this.succesfullySent++;
             }
             this.sendingSignal = null;
          }
@@ -58,6 +61,7 @@ module.exports = class Station {
          if (this.waitTime > 0) {
             this.waitTime--;
          } else if (this.ethernet.isSilenced(this) && Math.random() < this.propability) {
+            this.messagesTotal++;
             this.sendMessage();
          }
       }

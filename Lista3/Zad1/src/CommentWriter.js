@@ -1,6 +1,6 @@
 const silentModeFinder = item => /--silent|-s/.test(item)
 
-module.exports = (argv, message) => {
+module.exports = (message) => {
    if (!process.argv.find(silentModeFinder)) {
       printComment(message)
    }

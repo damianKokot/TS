@@ -7,20 +7,27 @@ function main(action) {
    let codedMessage;
 
    if (action == 'encode') {
+      clearFile('encode');
       const encoder = new Coder.Encoder();
-      codedMessage = encoder.encode(message);
+      encoder.encode(message, writeToFile);
    } else {
       const decoder = new Coder.Decoder();
       codedMessage = decoder.decode(message);
+      writeToFile('decode', codedMessage);
    }
 
-   writeToFile(action, codedMessage);
    return codedMessage;
 }
 
 // =================================
 //       Operating with files
 // =================================
+
+function clearFile(action) {
+   // Read from file
+   const filename = (action == 'encode') ? 'files/w.txt' : 'files/zc.txt';
+   fs.writeFileSync(filename, '');
+}
 
 function readFile(action) {
    // Read from file
@@ -31,7 +38,7 @@ function readFile(action) {
 function writeToFile(action, message) {
    // Read from file
    const filename = (action == 'encode') ? 'files/w.txt' : 'files/zc.txt';
-   fs.writeFileSync(filename, message);
+   fs.appendFileSync(filename, message);
 }
 
 // =================================
@@ -42,9 +49,7 @@ const encodeFinder = item => /--encode|-e/.test(item)
 const decodeFinder = item => /--decode|-d/.test(item)
 
 if (process.argv.find(encodeFinder)) {
-   const encodedMessage = main('encode')
-
-   printComment(process.argv, encodedMessage);
+   main('encode')
 } else if (process.argv.find(decodeFinder)) {
    try {
       main('decode')

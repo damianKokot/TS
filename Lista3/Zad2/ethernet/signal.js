@@ -1,5 +1,5 @@
 module.exports = class Signal {
-   static none = '0';
+   static none = ' ';
    static conflict = '!';
    static jam = 'J';
 
@@ -22,7 +22,7 @@ module.exports = class Signal {
          this.rightPos++;
          if (this.rightPos === this.wireLength) {
             this.rightPos = null;
-         }      
+         }
       }
    }
 }

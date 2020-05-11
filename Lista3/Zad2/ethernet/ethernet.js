@@ -1,6 +1,8 @@
 const Wire = require('./wire');
 const Signal = require('./signal');
 
+const silentModeFinder = item => /--silent|-s/.test(item)
+
 module.exports = class Ethernet {
    constructor(wireLength, rounds) {
       this.wireLength = wireLength;
@@ -15,11 +17,16 @@ module.exports = class Ethernet {
       setInterval(() => {
          if (this.allowedToContinue) {
             if ((++round) > this.totalRounds) {
+               console.clear();
+               this.printState();
+
                process.exit();
             }
 
             this.nextStep();
-            this.printState(round);
+            if (process.argv.find(silentModeFinder)) {
+               this.printState(round);
+            }
          }
       }, interval);
    }
@@ -77,7 +84,7 @@ module.exports = class Ethernet {
       }
       console.log()
 
-      console.log('\tState\t\tLeft:\t\tColisions in row:\tWaiting:')
+      console.log('\tState\t\tLeft:\t\tColisions in row:\tWaiting:\tSuccess')
       for (const station of this.stations) {
          let status;
          if (station.sendingSignal == null) {
@@ -92,8 +99,10 @@ module.exports = class Ethernet {
          const leftSignals = station.leftSignals;
          const colisionsInRow = station.colisionsInRow;
          const waitTime = station.waitTime;
+         const success = station.succesfullySent;
+         const totalMessages = station.messagesTotal;
 
-         console.log(`${name}:\t${status}\t\t${leftSignals}\t\t${colisionsInRow}\t\t\t${waitTime}`)
+         console.log(`${name}:\t${status}\t\t${leftSignals}\t\t${colisionsInRow}\t\t\t${waitTime}\t\t${success}/${totalMessages}`)
       }
 
       console.log('Iteration: %s/%s', round, this.totalRounds)
