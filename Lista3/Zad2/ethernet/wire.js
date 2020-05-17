@@ -7,7 +7,7 @@ module.exports = class Wire {
       this.signals = []
    }
 
-   broadcastSignal(signal) {     
+   broadcastSignal(signal) {
       this.signals.push(new Signal(signal, this.wireLength));
    }
 
@@ -34,8 +34,8 @@ module.exports = class Wire {
       }
    }
 
-   printState() {
-      console.log('[' + this.states.join(' ') + ']');
+   toString() {
+      return `[${this.states.join(' ')}]`;
    }
 }
 

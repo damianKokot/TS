@@ -5,12 +5,14 @@ module.exports = class Station {
       this.propability = propabilityOfSending;
       this.position = position;
       this.name = name;
-      
+
       this.leftSignals = 0;
       this.colisionsInRow = 0;
       this.waitTime = 0;
       this.succesfullySent = 0;
       this.messagesTotal = 0;
+      this.sendingSignal = null;
+      this.wantToSendMessage = false;
 
       this.normalSignal = {
          value: this.name,
@@ -36,7 +38,7 @@ module.exports = class Station {
       this.ethernet.sendSignal(this.sendingSignal);
       this.leftSignals--;
    }
-   
+
    nextStep() {
       if (this.ethernet.isConflicted(this)) {
          if (this.sendingSignal !== null) {
@@ -47,7 +49,7 @@ module.exports = class Station {
          this.waitTime = computeWaitingTime(this.colisionsInRow) * this.packetSize;
       }
 
-      if(this.sendingSignal !== null) {
+      if (this.sendingSignal !== null) {
          if (this.leftSignals > 0) {
             this.broadcastSignal();
          } else {
@@ -58,10 +60,15 @@ module.exports = class Station {
             this.sendingSignal = null;
          }
       } else {
+         if (Math.random() < this.propability) {
+            this.wantToSendMessage = true;
+         }
+
          if (this.waitTime > 0) {
             this.waitTime--;
-         } else if (this.ethernet.isSilenced(this) && Math.random() < this.propability) {
+         } else if (this.ethernet.isSilenced(this) && this.wantToSendMessage) {
             this.messagesTotal++;
+            this.wantToSendMessage = false;
             this.sendMessage();
          }
       }

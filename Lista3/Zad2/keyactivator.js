@@ -8,16 +8,19 @@ module.exports = function configureKeyPresing(web, interval) {
       if (key.ctrl && key.name === 'c') {
          // On ctrl + c exit
          process.exit();
-      } else if (web.allowedToContinue === false && key.name === 'return') {
-         // If continous mode not running and enter pressed, 
-         // make web.allowedToContinue true for one interval
-         web.allowedToContinue = true;
-         setTimeout(() => {
-            web.allowedToContinue = false;
-         }, interval);
+      } else if (web.repeater === null && key.name === 'return') {
+         // Make single step
+         web.networkStep();
+         console.log('\nPAUSED');
       } else if (key.name === 'space') {
          // Switch between continous mode
-         web.allowedToContinue = !web.allowedToContinue;
+         if (web.repeater !== null) {
+            clearInterval(web.repeater);
+            web.repeater = null;
+            console.log('\nPAUSED');
+         } else {
+            web.run(interval);
+         }
       }
    });
 }
