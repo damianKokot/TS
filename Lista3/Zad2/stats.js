@@ -37,13 +37,12 @@ module.exports = class Stats {
          {
             name: 'Colisions in row',
             width: 20,
-            data: station => station.waitTime,
+            data: station => station.colisionsInRow,
          },
          {
             name: 'Waiting',
             width: 15,
-            data: station => station.colisionsInRow,
-            end: true,
+            data: station => station.waitTime,
          },
          {
             name: 'Success',

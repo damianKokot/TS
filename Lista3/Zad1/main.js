@@ -1,19 +1,33 @@
 const fs = require('fs')
 const Coder = require('./src/Coder')
-const printComment = require('./src/CommentWriter')
+const commenter = require('./src/CommentBuilder')
 
-function main(action) {
+function main(action, silent) {
    const message = readFile(action);
    let codedMessage;
 
+   clearFile(action);
    if (action == 'encode') {
-      clearFile('encode');
       const encoder = new Coder.Encoder();
-      encoder.encode(message, writeToFile);
+      encoder.encode(message, (message, encodedMessage) => {
+         if (!silent) {
+            commenter.comment(action, message, encodedMessage);
+            console.log('');
+         }
+         writeToFile(action, message);
+      });
+      console.log('Encoded:', encoder.encoded);
    } else {
       const decoder = new Coder.Decoder();
-      codedMessage = decoder.decode(message);
-      writeToFile('decode', codedMessage);
+      decoder.decode(message, (message, decodedMessage, err) => {
+         if (!silent) {
+            commenter.comment(action, message, decodedMessage, err);
+         }
+         if (!err) {
+            writeToFile(action, decodedMessage);
+         }
+      });
+      console.log('Successfully decoded:', decoder.decoded);
    }
 
    return codedMessage;
@@ -45,17 +59,26 @@ function writeToFile(action, message) {
 //        Starting program
 // =================================
 
-const encodeFinder = item => /--encode|-e/.test(item)
-const decodeFinder = item => /--decode|-d/.test(item)
+function run() {
+   const encodeFinder = item => /--encode|-e/.test(item)
+   const decodeFinder = item => /--decode|-d/.test(item)
+   const silentModeFinder = item => /--silent|-s/.test(item);
 
-if (process.argv.find(encodeFinder)) {
-   main('encode')
-} else if (process.argv.find(decodeFinder)) {
-   try {
-      main('decode')
-   } catch (err) {
-      console.error(err.message);
+   let action, silentModeOn = false;;
+
+   if (process.argv.find(encodeFinder)) {
+      action = 'encode';
+   } else if (process.argv.find(decodeFinder)) {
+      action = 'decode';
+   } else {
+      console.error('No action selected')
+      process.exit();
    }
-} else {
-   console.error('No action selected')
+
+   if (process.argv.find(silentModeFinder)) {
+      silentModeOn = true;
+   }
+
+   main(action, silentModeOn)
 }
+run();
